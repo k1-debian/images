@@ -14,7 +14,7 @@
 
 You will first need to flash the Debian-based image. 
 
-1. Get the latest one from [Releases](https://github.com/k1-debian/linux/releases). You want the `.ingenic` file.
+1. Get the latest one from [Releases](https://github.com/k1-debian/images/releases). You want the `.ingenic` file.
 2. Get and install the Cloner tool [https://github.com/Ingenic-community/Cloner/releases/tag/v2.5.18](https://github.com/Ingenic-community/Cloner/releases/tag/v2.5.18). **You need version 2.5.18 exactly, not older, not newer.**
 3. Connect your board using the Micro-USB cable to your computer (and on Windows, install the drivers from the Cloner tool)
 4. Load the `.ingenic` image into the cloner tool and press start. You should see 4 columns in the main table.
