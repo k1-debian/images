@@ -69,17 +69,21 @@ This guide uses KIAUH to install Klipper.
 ```bash
 cd ~ && git clone https://github.com/dw-0/kiauh.git
 ```
-2. Edit the following file: `~/kiauh/kiauh/components/moonraker/moonraker_setup.py`
+2. Edit the following file: `~/kiauh/kiauh/components/moonraker/services/moonraker_setup_service.py`
 ```bash
-nano ~/kiauh/kiauh/components/moonraker/moonraker_setup.py
+nano ~/kiauh/kiauh/components/moonraker/services/moonraker_setup_service.py
 ```
-Find a line that looks like this (should be around line 193):
+Find a lines that looks like this (should be around line 321):
 ```python
-        install_python_requirements(MOONRAKER_ENV_DIR, MOONRAKER_SPEEDUPS_REQ_FILE)
+                install_python_requirements(
+                    MOONRAKER_ENV_DIR, MOONRAKER_SPEEDUPS_REQ_FILE
+                )
 ```
 and comment it out (so it looks like this)
 ```python
-        # install_python_requirements(MOONRAKER_ENV_DIR, MOONRAKER_SPEEDUPS_REQ_FILE)
+                # install_python_requirements(
+                #    MOONRAKER_ENV_DIR, MOONRAKER_SPEEDUPS_REQ_FILE
+                # )
 ```
 Not doing this will result in a very long installation of Moonraker (due to the limited amount of RAM)
 
@@ -89,30 +93,32 @@ If you are not using the original Creality bed sensor - `prtouch`, because you h
 
 This here is for those, who want to use the `prtouch` "probe" originally installed on the K1 series printers.
 
-1. Start KIAUH:
+1. Manually clone modified Klipper repository
+```bash
+git clone https://github.com/k1-debian/K1_Series_Klipper klipper
+```
+2. Start KIAUH:
 ```bash
 ./kiauh/kiauh.sh
 ```
-2. **Select that you want to use v6!**
-3. On the main screen, select `Settings` and then `Set Klipper source repository`
-3. Enter this as repository URL: `https://github.com/k1-debian/K1_Series_Klipper.git` and keep the default `master` branch.
-4. Go back to the main screen and install Klipper, keep all the settings default.
-6. After installation of Klipper, do not continue to install other tools, instead quit KIAUH.
-7. Stop Klipper service:
+3. **Select that you want to use v6!**
+4. Install Klipper, keep all the settings default, when ask if tou want to overwrite existing folder say "N".
+5. After installation of Klipper, do not continue to install other tools, instead quit KIAUH.
+6. Stop Klipper service:
 ```bash
 sudo systemctl stop klipper
 ```
-8. You will need to replace Klipper python env, as this is now created with Python 3.11 and we need it with Python 3.8. Use the following commands:
+7. You will need to replace Klipper python env, as this is now created with Python 3.11 and we need it with Python 3.8. Use the following commands:
 ```bash
 rm -rf klippy-env
 virtualenv -p /usr/bin/python3.8 klippy-env
 ~/klippy-env/bin/pip install -U pip setuptools
 ~/klippy-env/bin/pip install -r ~/klipper/scripts/klippy-requirements.txt
 ```
-9. You will need to build and enable the host mcu service.
+8. You will need to build and enable the host mcu service.
 Go to Klipper directory:
 ```bash
-cd Klipper
+cd klipper
 ```
 run `menuconfig`
 ```bash
@@ -124,16 +130,16 @@ Run to build and install:
 make && make flash
 ```
 Install and enable the service:
-```
+```bash
 sudo cp ./scripts/klipper-mcu.service /etc/systemd/system/
 sudo systemctl enable klipper-mcu.service
 sudo systemctl start klipper-mcu.service
 ```
-10. Go back to the home directory
-```
+9. Go back to the home directory
+```bash
 cd ~
 ```
-11. Copy the default printer configs for your printer:
+10. Copy the default printer configs for your printer:
 ```bash
 cp -f ~/klipper/config/<YOUR PRINTER>/* ~/printer_data/config/
 rm -f ~/printer_data/config/factory_printer.cfg
