@@ -130,7 +130,7 @@ Although Klipper itself supports CFS, there is absolutely no support for CFS in 
 
 ### Upgrade from non-CFS version
 
-If you had previous version installed, you will first need to completely uninstall Klipper using KIAUH, than delete `~/Klipper` and `~/klippy-env` directories and than install Klipper again. You will not loose your `printer.cfg` this way. After completing the upgrade, you can delete `~/printer_data/config/creality` directory - it is no longer needed.
+If you had previous version installed, you will first need to completely uninstall Klipper using KIAUH, than delete `~/klipper` and `~/klippy-env` directories and than install Klipper again. You will not loose your `printer.cfg` this way. After completing the upgrade, you can delete `~/printer_data/config/creality` directory - it is no longer needed.
 
 ### Input shaping calibration
 
