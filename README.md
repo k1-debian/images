@@ -140,6 +140,14 @@ Instead tun following command to install dependencies:
 sudo apt install python3-numpy python3-matplotlib
 ```
 
+### Disk space
+
+After installing everything, there is around 600MB disk space left. If you don't plan to recompile klipper for MCU (if you are using creality klipper, you really should not), you can remove some dependencies to get some space back:
+
+```
+sudo apt remove --purge binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-dev libstdc++-arm-none-eabi-newlib libnewlib-dev
+```
+
 ---
 
 ### Option 2: Vanilla Klipper
