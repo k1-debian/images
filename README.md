@@ -135,7 +135,7 @@ If you had previous version installed, you will first need to completely uninsta
 ### Input shaping calibration
 
 Do not use KIAUH option to install input shaping dependencies, it will fail.
-Instead tun following command to install dependencies:
+Instead run following command to install dependencies:
 ```
 sudo apt install python3-numpy python3-matplotlib
 ```
