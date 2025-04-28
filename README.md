@@ -84,7 +84,7 @@ If you're unsure, choose **Option 1**.
 
 1. Download the correct KIAUH config:
 ```bash
-curl -o ~/kiauh/kiauh.cfg  https://raw.githubusercontent.com/k1-debian/images/refs/heads/master/kiauh/creality-klipper.cfg
+curl -o ~/kiauh/kiauh.cfg  https://raw.githubusercontent.com/k1-debian/images/refs/heads/master/kiauh/creality-Klipper.cfg
 ```
 2. Start KIAUH:
 ```bash
@@ -92,27 +92,23 @@ curl -o ~/kiauh/kiauh.cfg  https://raw.githubusercontent.com/k1-debian/images/re
 ```
 3. **Be sure to select v6!**
 4. Install Klipper, Moonraker, Mainsail, KlipperScreen, and Crowsnest. **Do not install the Mainsail printer config.**
-5. Install host MCU support. Follow the instructions here: [https://www.klipper3d.org/RPi_microcontroller.html](https://www.klipper3d.org/RPi_microcontroller.html)
+5. Install host MCU support. Follow the instructions here: [https://www.Klipper3d.org/RPi_microcontroller.html](https://www.Klipper3d.org/RPi_microcontroller.html)
 6. Copy the default printer configs for your printer:
 ```bash
-cp -f ~/klipper/config/<YOUR PRINTER>/* ~/printer_data/config/
+cp -f ~/Klipper/config/<YOUR PRINTER>/* ~/printer_data/config/
 rm -f ~/printer_data/config/factory_printer.cfg
 ```
 
 Check [this directory](https://github.com/k1-debian/K1_Series_Klipper/tree/master/config) to see what options are available and choose the correct one for your printer. Replace `<YOUR PRINTER>` with the appropriate folder name.
 
-7. **Create `~/printer_data/config/creality` directory** (failing to do so will result in Klipper crash after the purge line)
-```bash
-mkdir ~/printer_data/config/creality
-```
-8. Reboot:
+7. Reboot:
 ```bash
 sudo reboot
 ```
 
-9. Configure Crowsnest—use one of the many tutorials available online.
+8. Configure Crowsnest—use one of the many tutorials available online.
 
-10. Calibration and test print:
+9. Calibration and test print:
 
 To calibrate the printer, run:
 ```
@@ -125,13 +121,28 @@ SAVE_CONFIG
 
 After this, you're ready to perform a test print.
 
+### CFS
+
+Provided firmware was extracted from CFS update and therefore contains all support in Klipper for CFS.
+
+Although Klipper itself supports CFS, there is absolutely no support for CFS in any GUI tool (Mainsail / KlipperScreen) so you will need to use raw macros for operating CFS. You can use KlipperScreen option to create custom menus.
+
+
+### Upgrade from non-CFS version
+
+If you had previous version installed, you will first need to completely uninstall Klipper using KIAUH, than delete `~/Klipper` and `~/klippy-env` directories and than install Klipper again. You will not loose your `printer.cfg` this way. After completing the upgrade, you can delete `~/printer_data/config/creality` directory - it is no longer needed.
+
+### Input shaping calibration
+
+All dependencies for input shaping calibration is already included. Do not use KIAUH option to install input shaping dependencies, it will fail.
+
 ---
 
 ### Option 2: Vanilla Klipper
 
 1. Download the correct KIAUH config:
 ```bash
-curl -o ~/kiauh/kiauh.cfg  https://raw.githubusercontent.com/k1-debian/images/refs/heads/master/kiauh/vanilla-klipper.cfg
+curl -o ~/kiauh/kiauh.cfg  https://raw.githubusercontent.com/k1-debian/images/refs/heads/master/kiauh/vanilla-Klipper.cfg
 ```
 2. Start KIAUH:
 ```bash
@@ -142,3 +153,5 @@ curl -o ~/kiauh/kiauh.cfg  https://raw.githubusercontent.com/k1-debian/images/re
 5. Create your own `printer.cfg`, calibrate your printer, and perform a test print.  
    You can use the original Creality configs as a reference: [https://github.com/k1-debian/K1_Series_Klipper/tree/master/config](https://github.com/k1-debian/K1_Series_Klipper/tree/master/config)  
    **Note:** These configs will not work directly with vanilla Klipper.
+
+If you want to use the original bed sensor, this project mey be interesting for you: [https://github.com/cryoz/K1_tenso_manual/blob/main/README_ENG.md](https://github.com/cryoz/K1_tenso_manual/blob/main/README_ENG.md)
