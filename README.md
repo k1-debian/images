@@ -84,7 +84,7 @@ If you're unsure, choose **Option 1**.
 
 1. Download the correct KIAUH config:
 ```bash
-curl -o ~/kiauh/kiauh.cfg  https://raw.githubusercontent.com/k1-debian/images/refs/heads/master/kiauh/creality-Klipper.cfg
+curl -o ~/kiauh/kiauh.cfg  https://raw.githubusercontent.com/k1-debian/images/refs/heads/master/kiauh/creality-klipper.cfg
 ```
 2. Start KIAUH:
 ```bash
@@ -145,7 +145,7 @@ sudo apt install python3-numpy python3-matplotlib
 After installing everything, there is around 600MB disk space left. If you don't plan to recompile klipper for MCU (if you are using creality klipper, you really should not), you can remove some dependencies to get some space back:
 
 ```
-sudo apt remove --purge binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-dev libstdc++-arm-none-eabi-newlib libnewlib-dev
+sudo apt remove --purge avrdude gcc-avr binutils-avr avr-libc stm32flash dfu-util libnewlib-arm-none-eabi gcc-arm-none-eabi binutils-arm-none-eabi libftdi1 libhidapi-libusb0 libnewlib-dev
 ```
 
 ---
@@ -154,7 +154,7 @@ sudo apt remove --purge binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-n
 
 1. Download the correct KIAUH config:
 ```bash
-curl -o ~/kiauh/kiauh.cfg  https://raw.githubusercontent.com/k1-debian/images/refs/heads/master/kiauh/vanilla-Klipper.cfg
+curl -o ~/kiauh/kiauh.cfg  https://raw.githubusercontent.com/k1-debian/images/refs/heads/master/kiauh/vanilla-klipper.cfg
 ```
 2. Start KIAUH:
 ```bash
